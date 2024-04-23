@@ -1,23 +1,14 @@
-project:
-  key: DEMO
-  name: demo
-  plans:
-    - plan:
-        key: TEMP1
-        name: temp1
-        enabled: true
-        stages:
-          - stage:
-              name: Build and Test
-              jobs:
-                - job:
-                    key: BUILD
-                    tasks:
-                      - script:
-                          type: inline
-                          inline: |
-                            ./npm install
-                      - script:
-                          type: inline
-                          inline: |
-                            ./npm test
+plan:
+  project-key: DEMO
+  name: temp1
+  key: TEMP1
+
+stages:
+  - First Build Stage:
+      jobs: 
+        - Build Ship Server
+
+Build Ship Server:
+  tasks:
+    - script:
+        - echo 'Hello world'
