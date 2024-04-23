@@ -5,4 +5,5 @@ plan:
 
 Job number 1:
   tasks:
-    - script: echo 'Hello world'
+    - npm: install
+    - node: index.js
