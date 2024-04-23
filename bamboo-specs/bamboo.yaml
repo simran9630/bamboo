@@ -5,7 +5,7 @@ plan:
 
 Job number 1:
   tasks:
-    scripts : 
-      -npm install
-      -node index.js
+      - script: | 
+        npm install
+        node index.js
     
