@@ -1,0 +1,23 @@
+project:
+  key: DEMO
+  name: demo
+  plans:
+    - plan:
+        key: TEMP1
+        name: temp1
+        enabled: true
+        stages:
+          - stage:
+              name: Build and Test
+              jobs:
+                - job:
+                    key: BUILD
+                    tasks:
+                      - script:
+                          type: inline
+                          inline: |
+                            ./npm install
+                      - script:
+                          type: inline
+                          inline: |
+                            ./npm test
