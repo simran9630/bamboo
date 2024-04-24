@@ -5,4 +5,4 @@ plan:
 
 Job number 1:
   tasks:
-    - script: node index.js
+    - script: echo 'Hello world'
