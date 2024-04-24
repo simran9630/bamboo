@@ -1,3 +1,4 @@
+version: 2
 plan:
   project-key: DEMO
   name: temp1
@@ -11,4 +12,4 @@ stages:
 Build Ship Server:
   tasks:
     - script:
-        - echo 'Hello world'
+        - node index.js
