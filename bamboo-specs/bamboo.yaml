@@ -12,4 +12,4 @@ stages:
 Build Ship Server:
   tasks:
     - script:
-        - node index.js
+        - echo 'hello world'
