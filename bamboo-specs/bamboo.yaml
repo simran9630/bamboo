@@ -11,5 +11,6 @@ stages:
 
 Build Ship Server:
   tasks:
-    - script:
-        - echo 'hello world'
+       - script: | 
+          npm install
+          node index.js
