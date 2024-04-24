@@ -12,14 +12,14 @@ stages:
 Node exec:
   key: JOB1
   tasks:
-  - task1:
+  - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
       configuration:
         isolatedCache: 'false'
         runtime: Node.js
         command: install
       description: Install
-  - task2:
+  - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
       configuration:
         runtime: Node.js
