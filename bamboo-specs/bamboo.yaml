@@ -3,6 +3,12 @@ plan:
   name: temp1
   key: TEMP1
 
-Job number 1:
+stages:
+  - First Build Stage:
+      jobs: 
+        - Build Ship Server
+
+Build Ship Server:
   tasks:
-    - script: echo 'Hello world'
+    - script:
+        - echo 'Hello world'
