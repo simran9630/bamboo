@@ -12,6 +12,7 @@ stages:
 Build Ship Server:
   tasks:
     - script: 
+        interpreter: cmd.exe
         scripts:
           - npm install
           - node index.js
