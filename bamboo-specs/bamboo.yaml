@@ -1,6 +1,6 @@
 version: 2
 plan:
-  project-key: DEMO
+  project-key: TEST
   key: DEV
   name: devplan
 stages:
