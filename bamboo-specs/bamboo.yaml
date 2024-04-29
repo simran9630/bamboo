@@ -54,7 +54,7 @@ other:
 ---
 version: 2
 plan:
-  key: TES-TES
+  key: DEM-TES
 plan-permissions:
 - users:
   - simran
