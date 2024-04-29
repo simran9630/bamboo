@@ -2,8 +2,8 @@
 version: 2
 plan:
   project-key: DEM
-  key: TES
-  name: testplan
+  key: TES1
+  name: testplan1
 stages:
 - Default Stage:
     manual: false
