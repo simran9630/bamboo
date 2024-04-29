@@ -2,17 +2,20 @@
 version: 2
 plan:
   project-key: DEM
-  name: check
-  key: CHECK
-
+  key: TES
+  name: testplan
 stages:
-  - First Build Stage:
-      jobs: 
-        - Build Ship Server
-
-Build Ship Server: 
+- Default Stage:
+    manual: false
+    final: false
+    jobs:
+    - Default Job
+Default Job:
   key: JOB1
   tasks:
+  - checkout:
+      force-clean-build: false
+      description: Checkout Default Repository
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
       configuration:
@@ -21,9 +24,50 @@ Build Ship Server:
         command: install
       description: Install
   - any-task:
-      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
+      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.mocha
       configuration:
+        mochaRuntime: node_modules/mocha/bin/mocha
+        testFiles: test.js
         runtime: Node.js
-        command: index.js
+        parseTestResults: 'true'
       description: check
   artifact-subscriptions: []
+repositories:
+- bamboo:
+    scope: global
+triggers:
+- polling:
+    period: '180'
+branches:
+  create: manually
+  delete: never
+  link-to-jira: true
+notifications: []
+labels: []
+dependencies:
+  require-all-stages-passing: false
+  enabled-for-branches: true
+  block-strategy: none
+  plans: []
+other:
+  concurrent-build-plugin: system-default
+---
+version: 2
+plan:
+  key: TES-TES
+plan-permissions:
+- users:
+  - simran
+  permissions:
+  - view
+  - edit
+  - build
+  - clone
+  - admin
+  - view-configuration
+- roles:
+  - logged-in
+  - anonymous
+  permissions:
+  - view
+...
