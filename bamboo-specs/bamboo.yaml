@@ -1,7 +1,7 @@
 ---
 version: 2
 plan:
-  project-key: TEST
+  project-key: DEM
   name: check
   key: CHECK
 
