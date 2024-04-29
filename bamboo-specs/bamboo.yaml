@@ -10,11 +10,10 @@ stages:
       jobs: 
         - Build Ship Server
 
-Build Ship Server:
+Build Ship Server: 
+  key: JOB1
   tasks:
-    - script:
-        - echo 'Hello world'
-     - any-task:
+  - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
       configuration:
         isolatedCache: 'false'
@@ -27,3 +26,4 @@ Build Ship Server:
         runtime: Node.js
         command: index.js
       description: check
+  artifact-subscriptions: []
