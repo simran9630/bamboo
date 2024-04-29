@@ -31,6 +31,12 @@ Default Job:
         runtime: Node.js
         parseTestResults: 'true'
       description: check
+  - any-task:
+      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
+      configuration:
+        runtime: Node.js
+        command: index.js
+      description: Run apis
   artifact-subscriptions: []
 repositories:
 - bamboo:
