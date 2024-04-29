@@ -50,6 +50,7 @@ async function runbamboo() {
 const latitude = 37.7749; // Example latitude
 const longitude = -122.4194; // Example longitude
 const apiKey = process.env.API_KEY;
+console.log(apiKey);
 runbamboo();
 // const express = require('express');
 
