@@ -1,20 +1,18 @@
----
 version: 2
 plan:
   project-key: TEST
-  name: check
-  key: CHECK
-
+  key: DEV
+  name: devplan
 stages:
-  - First Build Stage:
-      jobs: 
-        - Build Ship Server
-
-Build Ship Server:
+- Default Stage:
+    manual: false
+    final: false
+    jobs:
+    - Node exec
+Node exec:
+  key: JOB1
   tasks:
-    - script:
-        - echo 'Hello world'
-     - any-task:
+  - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
       configuration:
         isolatedCache: 'false'
@@ -27,3 +25,4 @@ Build Ship Server:
         runtime: Node.js
         command: index.js
       description: check
+  artifact-subscriptions: []
