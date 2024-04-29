@@ -33,7 +33,7 @@ async function runbamboo() {
     axios.post(`http://localhost:8085/rest/api/latest/queue/${'DEM'}-TES`,{}, {
         headers: {
             
-            'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
+            'Authorization':`Bearer ${bamboo.AUTH_TOKEN}`
         }
     })
     .then(response => {
@@ -49,7 +49,7 @@ async function runbamboo() {
 // Example usage
 const latitude = 37.7749; // Example latitude
 const longitude = -122.4194; // Example longitude
-const apiKey = process.env.API_KEY;
+const apiKey = bamboo.API_KEY;
 console.log(apiKey);
 runbamboo();
 // const express = require('express');
