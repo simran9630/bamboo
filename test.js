@@ -1,7 +1,7 @@
 // test.js
 
 import { expect } from 'chai';
-import { add, subtract } from './calculator.js';
+import { add, subtract } from './calc.js';
 
 describe('Calculator', () => {
     describe('add', () => {
