@@ -51,15 +51,16 @@ const latitude = 37.7749; // Example latitude
 const longitude = -122.4194; // Example longitude
 const apiKey = process.env.API_KEY;
 
-const express = require('express');
+runbamboo();
+// const express = require('express');
 
-const app = express();
-const PORT = 3000; // Define the port number
+// const app = express();
+// const PORT = 3000; // Define the port number
 
 
-app.listen(PORT, () => {
-    // processWeatherData(latitude, longitude, apiKey);
-    runbamboo();
-    console.log(`Server is running on http://localhost:${PORT}`);
-    console.log(apiKey);
-});
+// app.listen(PORT, () => {
+//     // processWeatherData(latitude, longitude, apiKey);
+//     runbamboo();
+//     console.log(`Server is running on http://localhost:${PORT}`);
+//     console.log(apiKey);
+// });
