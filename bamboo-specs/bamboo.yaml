@@ -27,7 +27,7 @@ Default Job:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.mocha
       configuration:
         mochaRuntime: node_modules/mocha/bin/mocha
-        testFiles: test.js
+        testFiles: test.mjs
         runtime: Node.js
         parseTestResults: 'true'
       description: check
@@ -60,7 +60,7 @@ other:
 ---
 version: 2
 plan:
-  key: DEM-TES
+  key: DEM-TES1
 plan-permissions:
 - users:
   - simran

@@ -1,7 +1,10 @@
 // test.js
 
 import { expect } from 'chai';
-import { add, subtract } from './calc.js';
+// Another file
+import pkg from './calc.js';
+const { add, subtract } = pkg;
+
 
 describe('Calculator', () => {
     describe('add', () => {
