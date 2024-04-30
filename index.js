@@ -29,8 +29,26 @@ async function processWeatherData(lat, lon, apiKey) {
     }
 }
 
+async function createRelease() {
+    axios.get(`http://localhost:8085/rest/api/latest/deploy/project/{8159233}/versions`,{
+        headers: {
+            
+            'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
+        }
+    })
+    .then(response => {
+        console.log(`Response: ${response.status} ${response.statusText}`);
+        console.log(response.data); 
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
 async function runbamboo() {
-    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId={8159233}&environmentId={8355841}`,{}, {
+    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId=8749057&environmentId=8355841`,{
+
+    }, {
         headers: {
             
             'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
@@ -51,6 +69,8 @@ const latitude = 37.7749; // Example latitude
 const longitude = -122.4194; // Example longitude
 const apiKey = process.env.API_KEY;
 console.log(apiKey);
+// createRelease();
+
 runbamboo();
 // const express = require('express');
 
