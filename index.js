@@ -30,7 +30,7 @@ async function processWeatherData(lat, lon, apiKey) {
 }
 
 async function runbamboo() {
-    axios.post(`http://localhost:8085/rest/api/latest/queue/${'DEM'}-TES`,{}, {
+    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId={8159233}&environmentId={8355841}`,{}, {
         headers: {
             
             'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
