@@ -5,7 +5,7 @@ async function processWeatherData(lat, lon, apiKey) {
         const weatherData = await fetchWeatherData(lat, lon, apiKey);
         console.log(weatherData)
         const temperature = weatherData.main.temp; // Temperature in Kelvin
-        return temperature > 303.15
+        return temperature < 303.15
     } catch (error) {
         console.error('Error processing weather data:', error);
     }
