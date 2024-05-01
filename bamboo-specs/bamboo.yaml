@@ -37,6 +37,13 @@ Default Job:
         runtime: Node.js
         command: index.js
       description: Run apis
+  artifacts:
+  - name: a1
+    pattern:
+    - '*.json'
+    - '*.txt'
+    shared: true
+    required: true
   artifact-subscriptions: []
 
 repositories:
