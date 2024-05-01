@@ -1,29 +1,28 @@
-// test.js
-
-import { expect } from 'chai';
-// Another file
-import pkg from './calc.js';
-const { add, subtract } = pkg;
+import { expect } from 'chai'; // Assuming you're using Chai for assertions
+import pkg from './calc.js';// Assuming your function is in a separate module
+import sinon from 'sinon';
 
 
-describe('Calculator', () => {
-    describe('add', () => {
-        it('should add two numbers correctly', () => {
-            expect(add(1, 2)).to.equal(3);
-        });
+// Import or define your function
+const { processWeatherData } = pkg;
 
-        it('should handle negative numbers', () => {
-            expect(add(-1, 2)).to.equal(1);
-        });
-    });
+describe('processWeatherData', () => {
+  it('should return true if temperature is greater than 30°C', async () => {
+    // Mock the fetchWeatherData function to return weather data with temperature greater than 30°C
+    const mockWeatherData = {
+      main: {
+        temp: 304, // Temperature greater than 30°C in Kelvin
+      },
+    };
+  
+    // Call the function
+    const result = await processWeatherData(0, 0, 'your-api-key');
 
-    describe('subtract', () => {
-        it('should subtract two numbers correctly', () => {
-            expect(subtract(5, 3)).to.equal(2);
-        });
+    // Check if the result is true
+    expect(result).to.be.true;
 
-        it('should handle negative results', () => {
-            expect(subtract(2, 5)).to.equal(-3);
-        });
-    });
+    // Restore the stub
+    sinon.restore();
+  });
+
 });

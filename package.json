@@ -25,6 +25,7 @@
     "grunt-mocha-test": "^0.13.3",
     "mocha": "^10.4.0",
     "mocha-bamboo-reporter": "*",
-    "nodeunit": "~0.8"
+    "nodeunit": "~0.8",
+    "sinon": "^17.0.1"
   }
 }

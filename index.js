@@ -12,22 +12,6 @@ async function fetchWeatherData(lat, lon, apiKey) {
 }
 
 // Function to call another API if temperature is greater than 30
-async function processWeatherData(lat, lon, apiKey) {
-    try {
-        const weatherData = await fetchWeatherData(lat, lon, apiKey);
-        console.log(weatherData)
-        const temperature = weatherData.main.temp; // Temperature in Kelvin
-        if (temperature > 303.15) { // Convert Kelvin to Celsius
-            // Call another API here
-            console.log('Temperature is greater than 30°C. Calling another API...');
-            // Call your other API here
-        } else {
-            console.log('Temperature is not greater than 30°C.');
-        }
-    } catch (error) {
-        console.error('Error processing weather data:', error);
-    }
-}
 
 async function createRelease() {
     axios.get(`http://localhost:8085/rest/api/latest/deploy/project/{8159233}/versions`,{
@@ -51,7 +35,8 @@ async function runbamboo() {
     }, {
         headers: {
             
-            'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
+            'Authorization':`Bearer ${process.env.AUTH_TOKEN}`,
+            'Content-Type': 'application/json'
         }
     })
     .then(response => {
