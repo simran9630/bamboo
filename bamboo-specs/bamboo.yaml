@@ -44,6 +44,7 @@ Default Job:
     - '*.txt'
     shared: true
     required: true
+    compression: true
   artifact-subscriptions: []
 
 repositories:
