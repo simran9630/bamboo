@@ -43,7 +43,6 @@ Default Job:
     - '*.json'
     - '*.txt'
     shared: true
-    required: true
     httpCompressionOn: true
   artifact-subscriptions: []
 
