@@ -15,9 +15,6 @@ test:
   tasks:
   - clean
   - artifact-download:
-      artifacts:
-      - destination: data/
-        name: a1
       description: Download release contents
   - script:
       interpreter: SHELL
