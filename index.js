@@ -65,7 +65,7 @@ async function createRelease() {
 
 
 async function runbamboo() {
-    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId=11304961&environmentId=11206658`,{
+    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId=11304962&environmentId=11206658`,{
 
     }, {
         headers: {
