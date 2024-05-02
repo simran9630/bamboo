@@ -34,8 +34,8 @@ test:
         exit 1
       conditions:
       - variable:
-          exists:
-            inject.opscan
+          equals:
+            inject.opscan: 'false'
       description: print
   final-tasks: []
   requirements: []
