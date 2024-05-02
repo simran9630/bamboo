@@ -27,7 +27,7 @@ test:
       interpreter: SHELL
       scripts:
       - |-
-        echo 'hello world'
+        echo 'hello world ${bamboo.opscan}'
         exit 1
       conditions:
       - variable:
