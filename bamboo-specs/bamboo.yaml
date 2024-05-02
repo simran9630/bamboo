@@ -23,6 +23,9 @@ test:
       scope: LOCAL
       namespace: inject
       description: var
+  -script:
+    -echo '${bamboo.opscan}'
+
   - script:
       interpreter: SHELL
       scripts:
