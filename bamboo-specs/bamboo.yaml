@@ -23,11 +23,9 @@ test:
       scope: LOCAL
       namespace: inject
       description: var
-  - script:
-      interpreter: SHELL
-      scripts:
-      - |-
-       echo ${bamboo.opscan}
+  - any-task:
+      plugin-key: com.atlassian.bamboo.plugins.bamboo-variable-inject-plugin:dump
+      configuration: {}
   - script:
       interpreter: SHELL
       scripts:
