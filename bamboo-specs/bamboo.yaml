@@ -35,7 +35,7 @@ test:
       conditions:
       - variable:
           exists:
-            opscan
+            inject.opscan
       description: print
   final-tasks: []
   requirements: []
