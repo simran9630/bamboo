@@ -38,7 +38,7 @@ test:
             inject.opscan: 'false'
       description: print
   variables: 
-      deploy.rollback : 'true'
+      deploy.rollback : true
   final-tasks: []
   requirements: []
   notifications: []
