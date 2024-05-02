@@ -11,7 +11,7 @@ async function scanStatus() {
     try {
         await resetScan();
         const stat = await processWeatherData();
-        
+        console.log(stat);
         fs.writeFile('var.txt', `opscan=${stat ? 'true' : 'false'}`, function (err) {
             if (err) throw err;
             console.log('File updated!');
