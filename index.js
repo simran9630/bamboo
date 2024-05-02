@@ -1,9 +1,11 @@
 const axios = require('axios');
+
 require('dotenv').config()
 // Function to fetch weather data from OpenWeatherMap API
 async function fetchWeatherData(lat, lon, apiKey) {
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+       const api=process.env.API_KEY;
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${api}`);
         return response.data;
     } catch (error) {
         console.error('Error fetching weather data:', error);
@@ -18,6 +20,31 @@ async function createRelease() {
         headers: {
             
             'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
+        }
+    })
+    .then(response => {
+        console.log(`Response: ${response.status} ${response.statusText}`);
+        console.log(response.data); 
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+
+
+async function createVar() {
+    const val= await processWeatherData();
+    axios.post(`http://localhost:8085/rest/api/latest/deploy/environment/8355841/variable`,{
+       
+        name:"opscan",
+        value:val
+       
+    }, {
+        headers: {
+            
+            'Authorization':`Bearer ${process.env.AUTH_TOKEN}`,
+            'Content-Type': 'application/json'
         }
     })
     .then(response => {
@@ -55,8 +82,18 @@ const longitude = -122.4194; // Example longitude
 const apiKey = process.env.API_KEY;
 console.log(apiKey);
 // createRelease();
+async function processWeatherData(lat, lon, apiKey) {
+    try {
+        const weatherData = await fetchWeatherData(lat, lon, apiKey);
+        console.log(weatherData)
+        const temperature = weatherData.main.temp; // Temperature in Kelvin
+        return temperature > 303.15
+    } catch (error) {
+        console.error('Error processing weather data:', error);
+    }
+}
 
-runbamboo();
+createVar();
 // const express = require('express');
 
 // const app = express();
