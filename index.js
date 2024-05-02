@@ -24,7 +24,7 @@ async function scanStatus() {
 }
 function resetScan(){
     
-            fs.writeFile('var.txt', `opscan=false`, function (err) {
+            fs.writeFile('var.txt', `opscan='false'`, function (err) {
                 if (err) throw err;
                 console.log('File updated!');
                 // Call your function here
