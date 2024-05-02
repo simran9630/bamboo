@@ -14,8 +14,6 @@ test:
   triggers: []
   tasks:
   - clean
-  - artifact-download:
-      description: Download release contents
   - script:
       interpreter: SHELL
       scripts:
