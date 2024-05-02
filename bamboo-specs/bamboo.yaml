@@ -30,13 +30,15 @@ test:
       interpreter: SHELL
       scripts:
       - |-
-        echo 'hello world ${bamboo.opscan}'
+        echo 'Optacloud check failed'
         exit 1
       conditions:
       - variable:
           equals:
             inject.opscan: 'false'
       description: print
+  variables: 
+      deploy.rollback : 'true'
   final-tasks: []
   requirements: []
   notifications: []
