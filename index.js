@@ -2,6 +2,36 @@ const axios = require('axios');
 
 require('dotenv').config()
 // Function to fetch weather data from OpenWeatherMap API
+
+
+const fs = require('fs');
+
+// Replace content of the file
+async function scanStatus() {
+    try {
+        await resetScan();
+        const stat = await processWeatherData();
+        
+        fs.writeFile('var.txt', `opscan=${stat ? 'true' : 'false'}`, function (err) {
+            if (err) throw err;
+            console.log('File updated!');
+            // Call your function here
+            runbamboo();
+        });
+    } catch (error) {
+        console.error('Error in scanStatus:', error);
+    }
+}
+function resetScan(){
+    
+            fs.writeFile('var.txt', `opscan=false`, function (err) {
+                if (err) throw err;
+                console.log('File updated!');
+                // Call your function here
+               
+            });
+       
+}
 async function fetchWeatherData(lat, lon, apiKey) {
     try {
        const api=process.env.API_KEY;
@@ -33,31 +63,9 @@ async function createRelease() {
 
 
 
-async function createVar() {
-    const val= await processWeatherData();
-    axios.post(`http://localhost:8085/rest/api/latest/deploy/environment/8355841/variable`,{
-       
-        name:"opscan",
-        value:val
-       
-    }, {
-        headers: {
-            
-            'Authorization':`Bearer ${process.env.AUTH_TOKEN}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        console.log(`Response: ${response.status} ${response.statusText}`);
-        console.log(response.data); 
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-}
 
 async function runbamboo() {
-    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId=8749057&environmentId=8355841`,{
+    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId=11304961&environmentId=11206657`,{
 
     }, {
         headers: {
@@ -69,6 +77,7 @@ async function runbamboo() {
     .then(response => {
         console.log(`Response: ${response.status} ${response.statusText}`);
         console.log(response.data); 
+        resetScan();
     })
     .catch(error => {
         console.error('Error:', error);
@@ -93,7 +102,7 @@ async function processWeatherData(lat, lon, apiKey) {
     }
 }
 
-createVar();
+scanStatus();
 // const express = require('express');
 
 // const app = express();

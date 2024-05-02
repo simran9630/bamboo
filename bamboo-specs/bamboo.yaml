@@ -1,7 +1,7 @@
 ---
 version: 2
 deployment:
-  name: demoprojdep
+  name: d1
   source-plan: DEM-TES1
 release-naming:
   next-version-name: release-2
@@ -35,14 +35,12 @@ test:
             opscan: 'true'
       description: print
   final-tasks: []
-  variables:
-    opscan: 'true'
   requirements: []
   notifications: []
 ---
 version: 2
 deployment:
-  name: demoprojdep
+  name: d1
 deployment-permissions:
 - users:
   - simran
