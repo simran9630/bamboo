@@ -35,7 +35,7 @@ test:
       conditions:
       - variable:
           equals:
-            opscan: 'false'
+            opscan: 'true'
       description: print
   final-tasks: []
   requirements: []
