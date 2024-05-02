@@ -27,8 +27,7 @@ test:
       interpreter: SHELL
       scripts:
       - |-
-       PLAN_VAR=$bamboo.my_plan_var
-       echo "testing: $PLAN_VAR"
+       echo $bamboo.opscan
   - script:
       interpreter: SHELL
       scripts:
