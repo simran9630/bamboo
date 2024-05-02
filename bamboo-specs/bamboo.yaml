@@ -34,8 +34,8 @@ test:
         exit 1
       conditions:
       - variable:
-          equals:
-            opscan: 'false'
+          exists:
+            opscan
       description: print
   final-tasks: []
   requirements: []
