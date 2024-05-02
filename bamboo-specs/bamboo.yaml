@@ -14,6 +14,15 @@ test:
   triggers: []
   tasks:
   - clean
+  - artifact-download:
+      artifacts:
+      - destination: data/
+      description: Download release contents
+  - inject-variables:
+      file: data/var.txt
+      scope: LOCAL
+      namespace: inject
+      description: var
   - script:
       interpreter: SHELL
       scripts:
@@ -26,6 +35,8 @@ test:
             opscan: 'true'
       description: print
   final-tasks: []
+  variables:
+    opscan: 'true'
   requirements: []
   notifications: []
 ---
