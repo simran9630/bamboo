@@ -23,11 +23,9 @@ test:
       conditions:
       - variable:
           equals:
-            dep: 'true'
+            opscan: 'true'
       description: print
   final-tasks: []
-  variables:
-    opscan: 'true'
   requirements: []
   notifications: []
 ---
