@@ -26,6 +26,26 @@ test:
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-variable-inject-plugin:dump
       configuration: {}
+  - checkout:
+      repository: demoproj
+      force-clean-build: false
+    - any-task:
+      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
+      configuration:
+        isolatedCache: 'false'
+        runtime: Node.js
+        command: install
+      description: Install
+  - any-task:
+      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
+      configuration:
+        runtime: Node.js
+        command: rollback.js
+        conditions:
+        - variable:
+            equals:
+              inject.opscan: 'false'
+      description: Rollback
   - script:
       interpreter: SHELL
       scripts:
@@ -100,14 +120,6 @@ Default Job:
         runtime: Node.js
         command: install
       description: Install
-  - any-task:
-      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.mocha
-      configuration:
-        mochaRuntime: node_modules/mocha/bin/mocha
-        testFiles: test.mjs
-        runtime: Node.js
-        parseTestResults: 'true'
-      description: check
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
       configuration:

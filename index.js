@@ -16,7 +16,7 @@ async function scanStatus() {
             if (err) throw err;
             console.log('File updated!');
             // Call your function here
-            runbamboo();
+            createRelease();
         });
     } catch (error) {
         console.error('Error in scanStatus:', error);
@@ -46,7 +46,11 @@ async function fetchWeatherData(lat, lon, apiKey) {
 // Function to call another API if temperature is greater than 30
 
 async function createRelease() {
-    axios.get(`http://localhost:8085/rest/api/latest/deploy/project/{8159233}/versions`,{
+    axios.post(`http://localhost:8085/rest/api/latest/deploy/project/11010049/version`,{
+        name:"release-7",
+        nextVersionName:"release-8",
+        planResultKey:"DEM-TES1-73"
+    },{
         headers: {
             
             'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
@@ -55,6 +59,28 @@ async function createRelease() {
     .then(response => {
         console.log(`Response: ${response.status} ${response.statusText}`);
         console.log(response.data); 
+        const verid=response?.data?.id;
+        runbamboo(verid);
+    })
+    .catch(error => {
+        console.error('Error:', error?.response?.data?.errors[0]);
+    });
+}
+
+async function getVersions() {
+    axios.get(`http://localhost:8085/rest/api/latest/deploy/project/11010049/versions`,{
+        headers: {
+            
+            'Authorization':`Bearer ${process.env.AUTH_TOKEN}`
+        }
+    })
+    .then((response) => {
+        console.log(`Response: ${response.status} ${response.statusText}`);
+        console.log(response.data); 
+        const verid=response?.data?.versions;
+        if(verid.length>1){
+           runbamboo(verid[1].id);
+        }
     })
     .catch(error => {
         console.error('Error:', error);
@@ -62,10 +88,8 @@ async function createRelease() {
 }
 
 
-
-
-async function runbamboo() {
-    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId=11304962&environmentId=11206658`,{
+async function runbamboo(verid) {
+    axios.post(`http://localhost:8085/rest/api/latest/queue/deployment?versionId=${verid}&environmentId=11206658`,{
 
     }, {
         headers: {
@@ -103,6 +127,8 @@ async function processWeatherData(lat, lon, apiKey) {
 }
 
 scanStatus();
+// getVersions();
+// createRelease();
 // const express = require('express');
 
 // const app = express();
