@@ -28,7 +28,7 @@ test:
       configuration: {}
   - checkout:
       repository: demoproj
-      force-clean-build: false
+      force-clean-build: true
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
       configuration:
