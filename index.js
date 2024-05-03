@@ -6,6 +6,9 @@ require('dotenv').config()
 
 const fs = require('fs');
 
+
+
+
 // Replace content of the file
 async function scanStatus() {
     try {

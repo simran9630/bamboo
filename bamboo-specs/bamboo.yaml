@@ -30,18 +30,18 @@ test:
       repository: demoproj
       force-clean-build: false
   - any-task:
-    plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
-    configuration:
-      isolatedCache: 'false'
-      runtime: Node.js
-      command: install
-    description: Install
+      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
+      configuration:
+        isolatedCache: 'false'
+        runtime: Node.js
+        command: install
+      description: Install
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
       configuration:
         runtime: Node.js
         command: rollback.js
-        conditions:
+      conditions:
         - variable:
             equals:
               inject.opscan: 'false'
@@ -50,7 +50,7 @@ test:
       interpreter: SHELL
       scripts:
       - |-
-        echo 'Optacloud check failed'
+        echo 'Rollback Successful'
         exit 1
       conditions:
       - variable:
