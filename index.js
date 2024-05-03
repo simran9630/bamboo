@@ -123,7 +123,7 @@ async function processWeatherData(lat, lon, apiKey) {
         const weatherData = await axios.post(`http://localhost:8080/sql/releaseSpecific`,{
             token:'iGaFDTNzaWgzQ6SS',
             repo:'bamboo',
-            branch:'simran',
+            branch:'main',
             projectName:'test',
             versionToRelease:'V.'+'1.0.0'
         });
