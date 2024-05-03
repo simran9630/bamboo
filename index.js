@@ -120,10 +120,16 @@ console.log(apiKey);
 // createRelease();
 async function processWeatherData(lat, lon, apiKey) {
     try {
-        const weatherData = await fetchWeatherData(lat, lon, apiKey);
+        const weatherData = await axios.post(`http://localhost:8080/sql/releaseSpecific`,{
+            token:'iGaFDTNzaWgzQ6SS',
+            repo:'bamboo',
+            branch:'simran',
+            projectName:'test',
+            versionToRelease:'V.'+'1.0.0'
+        });
         console.log(weatherData)
-        const temperature = weatherData.main.temp; // Temperature in Kelvin
-        return temperature > 303.15
+        const temperature = weatherData.status; // Temperature in Kelvin
+        return temperature;
     } catch (error) {
         console.error('Error processing weather data:', error);
     }
