@@ -29,13 +29,13 @@ test:
   - checkout:
       repository: demoproj
       force-clean-build: false
-    - any-task:
-      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
-      configuration:
-        isolatedCache: 'false'
-        runtime: Node.js
-        command: install
-      description: Install
+  - any-task:
+    plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
+    configuration:
+      isolatedCache: 'false'
+      runtime: Node.js
+      command: install
+    description: Install
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
       configuration:
