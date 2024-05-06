@@ -41,10 +41,6 @@ test:
       configuration:
         runtime: Node.js
         command: rollback.js
-      conditions:
-        - variable:
-            equals:
-              inject.opscan: 'false'
       description: Rollback
   - script:
       interpreter: SHELL

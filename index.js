@@ -135,7 +135,7 @@ async function processWeatherData(lat, lon, apiKey) {
     }
 }
 
-scanStatus();
+createRelease();
 // getVersions();
 // createRelease();
 // const express = require('express');
