@@ -50,8 +50,8 @@ async function fetchWeatherData(lat, lon, apiKey) {
 
 async function createRelease() {
     axios.post(`http://localhost:8085/rest/api/latest/deploy/project/11010049/version`,{
-        name:"release-11",
-        nextVersionName:"release-12",
+        name:"release-12",
+        nextVersionName:"release-13",
         planResultKey:"DEM-TES1-105"
     },{
         headers: {
@@ -128,7 +128,7 @@ async function processWeatherData(lat, lon, apiKey) {
             versionToRelease:'V.'+'1.0.0'
         });
         console.log(weatherData)
-        const temperature = weatherData.status; // Temperature in Kelvin
+        const temperature = weatherData?.data?.status; // Temperature in Kelvin
         return temperature;
     } catch (error) {
         console.error('Error processing weather data:', error);
