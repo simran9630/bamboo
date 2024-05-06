@@ -2,13 +2,7 @@ const axios = require('axios');
 
 require('dotenv').config()
 
-async function cRelease() {
-    try{
-        throw new Error("error");
-    }catch(error){
-        console.log(error);
-    }
-}
+
 
 
 
@@ -47,9 +41,11 @@ async function processWeatherData(lat, lon, apiKey) {
         console.log(weatherData)
         const temperature = weatherData?.data?.status; // Temperature in Kelvin
         if(temperature){
-            createRelease();
+           
         }else{
-            throw new Error("Failed to release database initiating rollback")
+            getVersions();
+            throw new Error("Failed to release database initiating rollback");
+            
         }
         return temperature;
     } catch (error) {
@@ -97,4 +93,4 @@ async function runbamboo(verid) {
     });
 }
 
-cRelease();
+processWeatherData();

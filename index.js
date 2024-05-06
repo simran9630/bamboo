@@ -50,8 +50,8 @@ async function fetchWeatherData(lat, lon, apiKey) {
 
 async function createRelease() {
     axios.post(`http://localhost:8085/rest/api/latest/deploy/project/11010049/version`,{
-        name:"release-13",
-        nextVersionName:"release-14",
+        name:"release-14",
+        nextVersionName:"release-15",
         planResultKey:"DEM-TES1-105"
     },{
         headers: {
@@ -66,7 +66,7 @@ async function createRelease() {
         runbamboo(verid);
     })
     .catch(error => {
-        console.error('Error:', error?.response?.data?.errors[0]);
+        console.error('Error:', error);
     });
 }
 
