@@ -14,7 +14,7 @@ async function scanStatus() {
     try {
         await resetScan();
         const stat = await processWeatherData();
-        console.log(stat);
+        console.log("optacloud scan updated as--------" , stat);
         fs.writeFile('var.txt', `opscan=${stat ? 'true' : 'false'}`, function (err) {
             if (err) throw err;
             console.log('File updated!');
@@ -50,9 +50,9 @@ async function fetchWeatherData(lat, lon, apiKey) {
 
 async function createRelease() {
     axios.post(`http://localhost:8085/rest/api/latest/deploy/project/11010049/version`,{
-        name:"release-10",
-        nextVersionName:"release-11",
-        planResultKey:"DEM-TES1-73"
+        name:"release-11",
+        nextVersionName:"release-12",
+        planResultKey:"DEM-TES1-105"
     },{
         headers: {
             
