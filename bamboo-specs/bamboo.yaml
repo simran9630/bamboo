@@ -22,7 +22,7 @@ test:
       repository: demoproj
       force-clean-build: true
   - inject-variables:
-      file: data/var.txt
+      file: var.txt
       scope: LOCAL
       namespace: inject
       description: var
