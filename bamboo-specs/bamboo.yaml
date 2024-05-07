@@ -51,7 +51,7 @@ test:
       conditions:
       - variable:
           equals:
-            inject.opscan: 'false'
+            inject.opscan: false
       description: print
   variables: 
       deploy.rollback : true
