@@ -36,7 +36,7 @@ async function scanStatus() {
                 if (err) throw err;
                 console.log('File updated!');
                 // Call your function here
-                createRelease();
+                // createRelease();
                 
                 // Read the updated contents of the file
                 fs.readFile('var.txt', 'utf8', function (err, newData) {

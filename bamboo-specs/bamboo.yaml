@@ -21,6 +21,19 @@ test:
   - checkout:
       repository: demoproj
       force-clean-build: true
+  - any-task:
+    plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
+    configuration:
+      isolatedCache: 'false'
+      runtime: Node.js
+      command: install
+    description: Install
+  - any-task:
+      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
+      configuration:
+        runtime: Node.js
+        command: index.js
+      description: Rollback
   - inject-variables:
       file: var.txt
       scope: LOCAL
@@ -29,14 +42,6 @@ test:
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-variable-inject-plugin:dump
       configuration: {}
-  
-  - any-task:
-      plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
-      configuration:
-        isolatedCache: 'false'
-        runtime: Node.js
-        command: install
-      description: Install
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.node
       configuration:
