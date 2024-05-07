@@ -18,6 +18,9 @@ test:
       artifacts:
       - destination: data/
       description: Download release contents
+  - checkout:
+      repository: demoproj
+      force-clean-build: true
   - inject-variables:
       file: data/var.txt
       scope: LOCAL
@@ -26,9 +29,7 @@ test:
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-variable-inject-plugin:dump
       configuration: {}
-  - checkout:
-      repository: demoproj
-      force-clean-build: true
+  
   - any-task:
       plugin-key: com.atlassian.bamboo.plugins.bamboo-nodejs-plugin:task.builder.npm
       configuration:
