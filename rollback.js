@@ -93,4 +93,5 @@ async function runbamboo(verid) {
     });
 }
 
-processWeatherData();
+// processWeatherData();
+console.log("rollback");
