@@ -77,9 +77,9 @@ async function fetchWeatherData(lat, lon, apiKey) {
 
 async function createRelease() {
     axios.post(`http://localhost:8085/rest/api/latest/deploy/project/11010049/version`,{
-        name:"release-16",
-        nextVersionName:"release-17",
-        planResultKey:"DEM-TES1-105"
+        name:"release-17",
+        nextVersionName:"release-18",
+        planResultKey:"DEM-TES1-121"
     },{
         headers: {
             
