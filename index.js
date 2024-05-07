@@ -13,13 +13,40 @@ const fs = require('fs');
 async function scanStatus() {
     try {
         await resetScan();
-        const stat = await processWeatherData();
-        console.log("optacloud scan updated as--------" , stat);
-        fs.writeFile('var.txt', `opscan=${stat ? 'true' : 'false'}`, function (err) {
-            if (err) throw err;
-            console.log('File updated!');
-            // Call your function here
-            createRelease();
+        fs.readFile('var.txt', 'utf8', async function (err, data) {
+            if (err) {
+                console.error('Error reading file:', err);
+                return;
+            }
+            
+            console.log('Current file contents:', data);
+
+            // Perform operations that depend on the file contents here
+            // For example, you can parse the data if it contains structured information
+
+            // Perform reset scan operation
+           
+
+            // Process weather data
+            const stat = await processWeatherData();
+            console.log("optacloud scan updated as--------" , stat);
+
+            // Write the updated status to the file
+            fs.writeFile('var.txt', `opscan=${stat ? 'true' : 'false'}`, function (err) {
+                if (err) throw err;
+                console.log('File updated!');
+                // Call your function here
+                createRelease();
+                
+                // Read the updated contents of the file
+                fs.readFile('var.txt', 'utf8', function (err, newData) {
+                    if (err) {
+                        console.error('Error reading file after write:', err);
+                        return;
+                    }
+                    console.log('Updated file contents:', newData);
+                });
+            });
         });
     } catch (error) {
         console.error('Error in scanStatus:', error);
@@ -50,8 +77,8 @@ async function fetchWeatherData(lat, lon, apiKey) {
 
 async function createRelease() {
     axios.post(`http://localhost:8085/rest/api/latest/deploy/project/11010049/version`,{
-        name:"release-14",
-        nextVersionName:"release-15",
+        name:"release-15",
+        nextVersionName:"release-16",
         planResultKey:"DEM-TES1-105"
     },{
         headers: {
@@ -135,7 +162,7 @@ async function processWeatherData(lat, lon, apiKey) {
     }
 }
 
-createRelease();
+scanStatus();
 // getVersions();
 // createRelease();
 // const express = require('express');
